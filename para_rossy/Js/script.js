@@ -70,7 +70,7 @@ function getURLParam(name) {
 function showDedicationText() { //seguidores
   let text = getURLParam('text');
   if (!text) {
-    text = `Para el amor de mi vida:\n\nDesde el primer momento supe que eras tú. Tu sonrisa, tu voz, tu forma de ser… todo en ti me hace sentir en casa.\n\nGracias por acompañarme en cada paso, por entenderme incluso en silencio, y por llenar mis días de amor.\n\nTe amo más de lo que las palabras pueden expresar.`;  } else {
+    text = `Para Rossy 🌷\n\nHoy cumples 19 espero que te hayan celebrado y si no, avisame y lo podemos arreglar en mi casa<3, y aunque no pude estar para darte algo, quise dedicarte algo especial, un poema que saqué de una pelicula que me gusta mucho:\n\nEs difícil respirar, se siente como flotar, lleno de amor, mi corazón explota. La boca seca, las manos tiemblan, Mi corazón es tuyo para tomarlo. Actuando raro, no soy yo, bailando como un duende, finalmente es hora, para que este pobre desgraciado sepa lo que es caer en el amor.`;  } else {
     text = decodeURIComponent(text).replace(/\\n/g, '\n');
   }
   const container = document.getElementById('dedication-text');
@@ -101,7 +101,7 @@ function showSignature() {
     dedication.appendChild(signature);
   }
   let firma = getURLParam('firma');
-  signature.textContent = firma ? decodeURIComponent(firma) : "Con amor, Zero";
+  signature.textContent = firma ? decodeURIComponent(firma) : "Con amor, Ramiro";
   signature.classList.add('visible');
 }
 
@@ -139,30 +139,7 @@ function startFloatingObjects() {
     else setTimeout(spawn, 1200 + Math.random() * 1200);
   }
   spawn();
-}
 
-// Cuenta regresiva o fecha especial
-function showCountdown() {
-  const container = document.getElementById('countdown');
-  let startParam = getURLParam('start');
-  let eventParam = getURLParam('event');
-  let startDate = startParam ? new Date(startParam + 'T00:00:00') : new Date('2024-08-03T00:00:00'); 
-  let eventDate = eventParam ? new Date(eventParam + 'T00:00:00') : new Date('2025-08-03T00:00:00');
-
-  function update() {
-    const now = new Date();
-    let diff = now - startDate;
-    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    let eventDiff = eventDate - now;
-    let eventDays = Math.max(0, Math.floor(eventDiff / (1000 * 60 * 60 * 24)));
-    let eventHours = Math.max(0, Math.floor((eventDiff / (1000 * 60 * 60)) % 24));
-    let eventMinutes = Math.max(0, Math.floor((eventDiff / (1000 * 60)) % 60));
-    let eventSeconds = Math.max(0, Math.floor((eventDiff / 1000) % 60));
-
-    container.innerHTML =
-      `Llevamos juntos: <b>${days}</b> días<br>` +
-      `Nuestro aniversario: <b>${eventDays}d ${eventHours}h ${eventMinutes}m ${eventSeconds}s</b>`;
-    container.classList.add('visible');
   }
   update();
   setInterval(update, 1000);
